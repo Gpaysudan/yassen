@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5" />
+  <title>ياسين جابر · المحامي والمستشار القانوني · YASEEN LAW</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;600;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    /* ===== CSS Variables ===== */
+    :root {
+      --bg-primary: #F5F5F5;
+      --bg-secondary: #ffffff;
+      --text-primary: #1a1a2e;
+      --text-secondary: #4a4a6a;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --border-color: rgba(201, 162, 39, 0.25);
+      --shadow-color: rgba(0, 0, 0, 0.08);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --gold: #C9A227;
+      --dark-blue: #0B1D3A;
+      --gold-glow: rgba(201, 162, 39, 0.15);
+    }
+    [data-theme="dark"] {
+      --bg-primary: #0a0a14;
+      --bg-secondary: #12121f;
+      --text-primary: #e8e8f0;
+      --text-secondary: #a8a8c0;
+      --card-bg: rgba(25, 25, 45, 0.9);
+      --border-color: rgba(201, 162, 39, 0.2);
+      --shadow-color: rgba(0, 0, 0, 0.5);
+      --glass-bg: rgba(255, 255, 255, 0.03);
+    }
+    * { transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease; }
+    body { font-family: 'Noto Kufi Arabic', 'Cairo', 'Tajawal', sans-serif; background: var(--bg-primary); color: var(--text-primary); }
+    [data-theme="dark"] .bg-white { background: var(--bg-secondary) !important; }
+    [data-theme="dark"] .bg-\[\#F5F5F5\] { background: var(--bg-primary) !important; }
+    [data-theme="dark"] .text-gray-600, [data-theme="dark"] .text-gray-700 { color: var(--text-secondary) !important; }
+    [data-theme="dark"] .text-gray-800 { color: var(--text-primary) !important; }
+    [data-theme="dark"] input, [data-theme="dark"] select, [data-theme="dark"] textarea { background: #1a1a2e; color: #e8e8f0; border-color: #2a2a4a; }
+    [data-theme="dark"] .shadow-xl { box-shadow: 0 25px 60px rgba(0,0,0,0.6) !important; }
+    [data-theme="dark"] .glass-card-light { background: rgba(25, 25, 45, 0.85) !important; }
+
+    /* ===== Hero - خلفية سودانية ===== */
+    .hero-sudan {
+      background: linear-gradient(135deg, rgba(11,29,58,0.88) 0%, rgba(11,29,58,0.70) 100%),
+                  repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(201,162,39,0.03) 30px, rgba(201,162,39,0.03) 60px),
+                  linear-gradient(135deg, #0B1D3A 0%, #1a2f4a 100%);
+      position: relative;
+      isolation: isolate;
+    }
+    .hero-sudan::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><path d='M100 10 L130 65 L195 65 L140 105 L160 165 L100 125 L40 165 L60 105 L5 65 L70 65 Z' fill='%23C9A227' opacity='0.05'/><circle cx='100' cy='90' r='30' fill='%23C9A227' opacity='0.03'/></svg>");
+      background-size: 200px 200px;
+      background-repeat: repeat;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-sudan::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(11,29,58,0.2) 0%, rgba(11,29,58,0.2) 33%, rgba(201,162,39,0.06) 33%, rgba(201,162,39,0.06) 66%, rgba(11,29,58,0.2) 66%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; }
+
+    /* ===== Glassmorphism ===== */
+    .glass-card { background: var(--glass-bg); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--border-color); }
+    .glass-card-light { background: var(--card-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--border-color); }
+
+    /* ===== Animations & Hover ===== */
+    .hover-lift { transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .hover-lift:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 25px 50px var(--shadow-color); }
+    .hover-gold { transition: all 0.3s ease; }
+    .hover-gold:hover { border-color: #C9A227; box-shadow: 0 0 30px var(--gold-glow); }
+    .gold-line { height: 3px; background: linear-gradient(90deg, transparent, #C9A227, transparent); }
+    .floating-wa { box-shadow: 0 8px 40px rgba(37,211,102,0.4); }
+    .floating-wa:hover { transform: scale(1.12) rotate(-6deg); }
+
+    /* ===== Payment Icons ===== */
+    .payment-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 14px; background: rgba(201,162,39,0.1); font-size: 22px; color: #C9A227; transition: all 0.3s ease; }
+    .payment-btn:hover .payment-icon { background: #C9A227; color: #0B1D3A; transform: scale(1.05); }
+    .payment-btn { transition: all 0.3s ease; cursor: pointer; border: 1px solid var(--border-color); background: var(--glass-bg); }
+    .payment-btn:hover { background: rgba(201,162,39,0.1); border-color: #C9A227; transform: scale(1.04); box-shadow: 0 8px 30px var(--gold-glow); }
+
+    /* ===== Contact Icons ===== */
+    .contact-icon-box { transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .contact-icon-box:hover { transform: translateY(-8px) scale(1.02); border-color: #C9A227; box-shadow: 0 25px 50px var(--shadow-color); }
+
+    /* ===== Language Switcher ===== */
+    .lang-ar, .lang-en, .lang-zh, .lang-fr, .lang-ru { display: none; }
+    [data-lang="ar"] .lang-ar { display: block; }
+    [data-lang="en"] .lang-en { display: block; }
+    [data-lang="zh"] .lang-zh { display: block; }
+    [data-lang="fr"] .lang-fr { display: block; }
+    [data-lang="ru"] .lang-ru { display: block; }
+    [data-lang="en"] { direction: ltr; text-align: left; }
+    [data-lang="zh"] { direction: ltr; text-align: left; }
+    [data-lang="fr"] { direction: ltr; text-align: left; }
+    [data-lang="ru"] { direction: ltr; text-align: left; }
+    [data-lang="en"] .space-x-reverse { flex-direction: row; }
+    [data-lang="zh"] .space-x-reverse { flex-direction: row; }
+    [data-lang="fr"] .space-x-reverse { flex-direction: row; }
+    [data-lang="ru"] .space-x-reverse { flex-direction: row; }
+
+    /* ===== Navbar ===== */
+    .navbar-blur { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); background: rgba(11,29,58,0.85); }
+    .lang-toggle-btn { transition: all 0.3s ease; border: 1px solid rgba(201,162,39,0.3); }
+    .lang-toggle-btn:hover { background: rgba(201,162,39,0.15); border-color: #C9A227; transform: scale(1.05); }
+
+    /* ===== Scroll Progress ===== */
+    #progressBar { height: 3px; background: linear-gradient(90deg, #C9A227, #f0d060); position: fixed; top: 0; left: 0; z-index: 9999; transition: width 0.1s ease; }
+
+    /* ===== Back to Top ===== */
+    #backToTop { transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    #backToTop:hover { transform: scale(1.15) translateY(-4px); }
+
+    /* ===== Achievement Cards ===== */
+    .achievement-card { transition: all 0.4s ease; }
+    .achievement-card:hover { transform: translateY(-10px) scale(1.02); border-color: #C9A227; box-shadow: 0 20px 60px rgba(201,162,39,0.15); }
+
+    /* ===== RTL Fixes ===== */
+    [data-lang="en"] .flex.items-center.gap-2 .fa-scale-balanced { margin-left: 8px; margin-right: 0; }
+    [data-lang="zh"] .flex.items-center.gap-2 .fa-scale-balanced { margin-left: 8px; margin-right: 0; }
+    [data-lang="fr"] .flex.items-center.gap-2 .fa-scale-balanced { margin-left: 8px; margin-right: 0; }
+    [data-lang="ru"] .flex.items-center.gap-2 .fa-scale-balanced { margin-left: 8px; margin-right: 0; }
+
+    /* ===== Custom Scroll ===== */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: #C9A227; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #b3901f; }
+
+    /* ===== Lawyer Badge ===== */
+    .lawyer-badge {
+      background: linear-gradient(135deg, #C9A227, #b3901f);
+      color: #0B1D3A;
+      font-weight: 800;
+      padding: 4px 16px;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== PROGRESS BAR ===== -->
+  <div id="progressBar"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" class="fixed top-0 right-0 left-0 z-50 navbar-blur border-b border-[#C9A227]/20 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-2 text-white">
+          <i class="fas fa-scale-balanced text-[#C9A227] text-2xl"></i>
+          <span class="font-extrabold text-xl tracking-wider">YASEEN LAW</span>
+          <span class="lawyer-badge hidden sm:inline-block mr-2"><span class="lang-ar">محامي</span><span class="lang-en">Lawyer</span><span class="lang-zh">律师</span><span class="lang-fr">Avocat</span><span class="lang-ru">Адвокат</span></span>
+        </div>
+        <div class="hidden md:flex items-center space-x-4 space-x-reverse">
+          <div class="flex space-x-6 space-x-reverse text-sm font-medium text-gray-200">
+            <a href="#hero" class="hover:text-[#C9A227] transition"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span><span class="lang-zh">首页</span><span class="lang-fr">Accueil</span><span class="lang-ru">Главная</span></a>
+            <a href="#about" class="hover:text-[#C9A227] transition"><span class="lang-ar">السيرة</span><span class="lang-en">Bio</span><span class="lang-zh">简介</span><span class="lang-fr">Biographie</span><span class="lang-ru">Биография</span></a>
+            <a href="#practice" class="hover:text-[#C9A227] transition"><span class="lang-ar">الخدمات</span><span class="lang-en">Services</span><span class="lang-zh">服务</span><span class="lang-fr">Services</span><span class="lang-ru">Услуги</span></a>
+            <a href="#achievements" class="hover:text-[#C9A227] transition"><span class="lang-ar">الإنجازات</span><span class="lang-en">Achievements</span><span class="lang-zh">成就</span><span class="lang-fr">Réalisations</span><span class="lang-ru">Достижения</span></a>
+            <a href="#consultation" class="hover:text-[#C9A227] transition"><span class="lang-ar">استشارة</span><span class="lang-en">Consult</span><span class="lang-zh">咨询</span><span class="lang-fr">Consultation</span><span class="lang-ru">Консультация</span></a>
+            <a href="#contact" class="hover:text-[#C9A227] transition"><span class="lang-ar">اتصال</span><span class="lang-en">Contact</span><span class="lang-zh">联系</span><span class="lang-fr">Contact</span><span class="lang-ru">Контакты</span></a>
+          </div>
+          <select onchange="changeLang(this.value)" class="lang-toggle-btn bg-transparent text-white text-sm px-3 py-1 rounded-full outline-none cursor-pointer">
+            <option value="ar" class="bg-[#0B1D3A]">🇸🇦 عربي</option>
+            <option value="en" class="bg-[#0B1D3A]">🇬🇧 English</option>
+            <option value="zh" class="bg-[#0B1D3A]">🇨🇳 中文</option>
+            <option value="fr" class="bg-[#0B1D3A]">🇫🇷 Français</option>
+            <option value="ru" class="bg-[#0B1D3A]">🇷🇺 Русский</option>
+          </select>
+          <button onclick="toggleTheme()" class="theme-toggle text-white text-lg px-2 hover:rotate-45 transition">
+            <i id="themeIcon" class="fas fa-moon"></i>
+          </button>
+        </div>
+        <button id="menuBtn" class="md:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden pb-4 text-sm text-gray-200 space-y-2">
+        <a href="#hero" class="block hover:text-[#C9A227]"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span><span class="lang-zh">首页</span><span class="lang-fr">Accueil</span><span class="lang-ru">Главная</span></a>
+        <a href="#about" class="block hover:text-[#C9A227]"><span class="lang-ar">السيرة</span><span class="lang-en">Bio</span><span class="lang-zh">简介</span><span class="lang-fr">Biographie</span><span class="lang-ru">Биография</span></a>
+        <a href="#practice" class="block hover:text-[#C9A227]"><span class="lang-ar">الخدمات</span><span class="lang-en">Services</span><span class="lang-zh">服务</span><span class="lang-fr">Services</span><span class="lang-ru">Услуги</span></a>
+        <a href="#achievements" class="block hover:text-[#C9A227]"><span class="lang-ar">الإنجازات</span><span class="lang-en">Achievements</span><span class="lang-zh">成就</span><span class="lang-fr">Réalisations</span><span class="lang-ru">Достижения</span></a>
+        <a href="#consultation" class="block hover:text-[#C9A227]"><span class="lang-ar">استشارة</span><span class="lang-en">Consult</span><span class="lang-zh">咨询</span><span class="lang-fr">Consultation</span><span class="lang-ru">Консультация</span></a>
+        <a href="#contact" class="block hover:text-[#C9A227]"><span class="lang-ar">اتصال</span><span class="lang-en">Contact</span><span class="lang-zh">联系</span><span class="lang-fr">Contact</span><span class="lang-ru">Контакты</span></a>
+        <div class="flex flex-wrap gap-2 pt-2">
+          <select onchange="changeLang(this.value)" class="bg-transparent text-white text-sm px-3 py-1 border border-[#C9A227]/30 rounded-full outline-none">
+            <option value="ar" class="bg-[#0B1D3A]">🇸🇦 عربي</option>
+            <option value="en" class="bg-[#0B1D3A]">🇬🇧 English</option>
+            <option value="zh" class="bg-[#0B1D3A]">🇨🇳 中文</option>
+            <option value="fr" class="bg-[#0B1D3A]">🇫🇷 Français</option>
+            <option value="ru" class="bg-[#0B1D3A]">🇷🇺 Русский</option>
+          </select>
+          <button onclick="toggleTheme()" class="text-lg px-2"><i id="themeIconMobile" class="fas fa-moon"></i></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="relative min-h-screen flex items-center overflow-hidden pt-16 hero-sudan">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0B1D3A]/40 via-[#0B1D3A]/30 to-[#0B1D3A]/80"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-white w-full hero-content">
+      <div data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-out">
+        <div class="inline-flex items-center gap-3 px-5 py-2 border border-[#C9A227]/40 rounded-full text-[#C9A227] text-sm mb-6 bg-[#0B1D3A]/50 backdrop-blur-sm">
+          <i class="fas fa-gavel"></i>
+          <span class="lang-ar">المحامي · المستشار القانوني</span>
+          <span class="lang-en">Lawyer · Legal Consultant</span>
+          <span class="lang-zh">律师 · 法律顾问</span>
+          <span class="lang-fr">Avocat · Conseiller Juridique</span>
+          <span class="lang-ru">Адвокат · Юрисконсульт</span>
+        </div>
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black leading-tight drop-shadow-2xl">
+          <span class="lang-ar">ياسين جابر محمد سلمان</span>
+          <span class="lang-en">Yaseen Jaber Mohamed Salman</span>
+          <span class="lang-zh">亚辛·贾比尔·穆罕默德·萨尔曼</span>
+          <span class="lang-fr">Yaseen Jaber Mohamed Salman</span>
+          <span class="lang-ru">Ясин Джабер Мохамед Салман</span>
+        </h1>
+        <div class="flex items-center gap-4 mt-3 flex-wrap">
+          <p class="text-xl sm:text-2xl lg:text-4xl font-light text-[#C9A227]">
+            <span class="lang-ar">محامي ومستشار قانوني</span>
+            <span class="lang-en">Lawyer & Legal Consultant</span>
+            <span class="lang-zh">律师与法律顾问</span>
+            <span class="lang-fr">Avocat & Conseiller Juridique</span>
+            <span class="lang-ru">Адвокат и юридический консультант</span>
+          </p>
+          <span class="lawyer-badge text-base"><span class="lang-ar">محامي</span><span class="lang-en">Lawyer</span><span class="lang-zh">律师</span><span class="lang-fr">Avocat</span><span class="lang-ru">Адвокат</span></span>
+        </div>
+        <p class="text-lg sm:text-xl max-w-2xl mt-4 text-gray-200 font-light">
+          <span class="lang-ar">العدالة.. الخبرة.. الثقة</span>
+          <span class="lang-en">Justice.. Experience.. Trust</span>
+          <span class="lang-zh">正义..经验..信任</span>
+          <span class="lang-fr">Justice.. Expérience.. Confiance</span>
+          <span class="lang-ru">Справедливость.. Опыт.. Доверие</span>
+        </p>
+        <div class="flex flex-wrap gap-4 mt-8">
+          <a href="#consultation" class="bg-[#C9A227] text-[#0B1D3A] font-bold px-9 py-4 rounded-full shadow-2xl hover:bg-[#b3901f] transition hover:scale-105 flex items-center gap-2">
+            <i class="fas fa-calendar-check"></i>
+            <span class="lang-ar">احجز استشارة</span><span class="lang-en">Book Consultation</span><span class="lang-zh">预约咨询</span><span class="lang-fr">Réserver</span><span class="lang-ru">Записаться</span>
+          </a>
+          <a href="https://wa.me/249929881546" target="_blank" class="bg-transparent border-2 border-[#C9A227] text-white px-9 py-4 rounded-full hover:bg-[#C9A227]/20 transition hover:scale-105 flex items-center gap-2">
+            <i class="fab fa-whatsapp"></i>
+            <span class="lang-ar">واتساب</span><span class="lang-en">WhatsApp</span><span class="lang-zh">WhatsApp</span><span class="lang-fr">WhatsApp</span><span class="lang-ru">WhatsApp</span>
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-8 mt-10 text-sm text-gray-200 font-medium">
+          <span><i class="fas fa-lock text-[#C9A227] ml-2"></i> <span class="lang-ar">سرية تامة</span><span class="lang-en">Confidential</span><span class="lang-zh">完全保密</span><span class="lang-fr">Confidentiel</span><span class="lang-ru">Конфиденциально</span></span>
+          <span><i class="fas fa-star text-[#C9A227] ml-2"></i> <span class="lang-ar">خبرة 8 سنوات</span><span class="lang-en">8 Years Experience</span><span class="lang-zh">8年经验</span><span class="lang-fr">8 ans d'expérience</span><span class="lang-ru">8 лет опыта</span></span>
+          <span><i class="fas fa-gavel text-[#C9A227] ml-2"></i> <span class="lang-ar">قانون سوداني</span><span class="lang-en">Sudanese Law</span><span class="lang-zh">苏丹法律</span><span class="lang-fr">Droit soudanais</span><span class="lang-ru">Суданское право</span></span>
+          <span><i class="fas fa-flag text-[#C9A227] ml-2"></i> <span class="lang-ar">السودان</span><span class="lang-en">Sudan</span><span class="lang-zh">苏丹</span><span class="lang-fr">Soudan</span><span class="lang-ru">Судан</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-1 gold-line"></div>
+  </section>
+
+  <!-- ===== ABOUT - السيرة الشخصية ===== -->
+  <section id="about" class="py-20 md:py-28 theme-transition" style="background: var(--bg-secondary);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right" data-aos-duration="800">
+          <div class="rounded-3xl shadow-2xl overflow-hidden border-2 border-[#C9A227]/20 max-w-sm mx-auto md:mx-0" style="background: var(--bg-primary);">
+            <img src="1.png" alt="ياسين جابر - محامي" class="w-full h-auto object-cover" loading="lazy" />
+            <div class="p-4 text-center bg-[#0B1D3A]/10">
+              <span class="text-[#C9A227] font-bold"><i class="fas fa-scale-balanced ml-2"></i> <span class="lang-ar">المحامي ياسين جابر</span><span class="lang-en">Lawyer Yaseen Jaber</span><span class="lang-zh">律师亚辛·贾比尔</span><span class="lang-fr">Avocat Yaseen Jaber</span><span class="lang-ru">Адвокат Ясин Джабер</span></span>
+            </div>
+          </div>
+        </div>
+        <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+          <span class="text-[#C9A227] font-bold text-sm tracking-widest"><i class="fas fa-user-tie ml-2"></i> <span class="lang-ar">السيرة الشخصية</span><span class="lang-en">Biography</span><span class="lang-zh">个人简介</span><span class="lang-fr">Biographie</span><span class="lang-ru">Биография</span></span>
+          <h2 class="text-3xl md:text-5xl font-black mt-3" style="color: var(--text-primary);">
+            <span class="lang-ar">ياسين جابر محمد سلمان</span>
+            <span class="lang-en">Yaseen Jaber Mohamed Salman</span>
+            <span class="lang-zh">亚辛·贾比尔·穆罕默德·萨尔曼</span>
+            <span class="lang-fr">Yaseen Jaber Mohamed Salman</span>
+            <span class="lang-ru">Ясин Джабер Мохамед Салман</span>
+          </h2>
+          <div class="inline-block bg-[#C9A227]/20 text-[#C9A227] px-4 py-1 rounded-full text-sm font-bold mt-2">
+            <span class="lang-ar">⚖️ محامي ومستشار قانوني</span>
+            <span class="lang-en">⚖️ Lawyer & Legal Consultant</span>
+            <span class="lang-zh">⚖️ 律师与法律顾问</span>
+            <span class="lang-fr">⚖️ Avocat & Conseiller Juridique</span>
+            <span class="lang-ru">⚖️ Адвокат и юрисконсульт</span>
+          </div>
+          <p class="mt-4 leading-relaxed text-base" style="color: var(--text-secondary);">
+            <span class="lang-ar">محامي ومستشار قانوني سوداني، حاصل على إجازة في القانون، بخبرة تمتد لأكثر من 8 سنوات في المرافعات والقضايا المدنية والجنائية. يقدم استشارات قانونية دقيقة وتمثيلاً قضائياً فعالاً، مع التزام تام بالسرية المهنية وأعلى معايير العدالة.</span>
+            <span class="lang-en">Sudanese lawyer and legal consultant, holder of a law degree, with over 8 years of experience in litigation, civil and criminal cases. Provides precise legal consultations and effective representation, with full commitment to professional confidentiality and the highest standards of justice.</span>
+            <span class="lang-zh">苏丹律师和法律顾问，持有法学学位，拥有超过8年的诉讼、民事和刑事案件经验。提供准确的法律咨询和有效的代理服务，完全遵守职业保密和最高司法标准。</span>
+            <span class="lang-fr">Avocat et consultant juridique soudanais, titulaire d'une licence en droit, avec plus de 8 ans d'expérience en litiges, affaires civiles et pénales. Fournit des consultations juridiques précises et une représentation efficace, avec un engagement total envers la confidentialité professionnelle.</span>
+            <span class="lang-ru">Суданский адвокат и юридический консультант, имеет диплом юриста, более 8 лет опыта в судебных процессах, гражданских и уголовных делах. Предоставляет точные юридические консультации и эффективное представительство с полным соблюдением профессиональной конфиденциальности.</span>
+          </p>
+          <div class="mt-6 space-y-2" style="color: var(--text-secondary);">
+            <p><i class="fas fa-check-circle text-[#C9A227] ml-2"></i> <strong class="lang-ar">الرؤية:</strong><span class="lang-ar"> تحقيق العدالة عبر الخبرة والثقة.</span><strong class="lang-en">Vision:</strong><span class="lang-en"> Justice through experience and trust.</span><strong class="lang-zh">愿景：</strong><span class="lang-zh">通过经验和信任实现正义。</span><strong class="lang-fr">Vision:</strong><span class="lang-fr"> La justice par l'expérience et la confiance.</span><strong class="lang-ru">Видение:</strong><span class="lang-ru"> Справедливость через опыт и доверие.</span></p>
+            <p><i class="fas fa-check-circle text-[#C9A227] ml-2"></i> <strong class="lang-ar">الرسالة:</strong><span class="lang-ar"> تقديم استشارات قانونية دقيقة وتمثيل قضائي فعال.</span><strong class="lang-en">Mission:</strong><span class="lang-en"> Accurate legal consultations and effective representation.</span><strong class="lang-zh">使命：</strong><span class="lang-zh">提供准确的法律咨询和有效的代理。</span><strong class="lang-fr">Mission:</strong><span class="lang-fr"> Consultations juridiques précises et représentation efficace.</span><strong class="lang-ru">Миссия:</strong><span class="lang-ru"> Точные юридические консультации и эффективное представительство.</span></p>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="bg-[#0B1D3A] text-white px-5 py-2 rounded-full text-sm shadow-lg"><i class="fas fa-user-tie ml-1"></i> <span class="lang-ar">اتحاد المحامين السودانيين</span><span class="lang-en">Sudan Bar Association</span><span class="lang-zh">苏丹律师协会</span><span class="lang-fr">Barreau soudanais</span><span class="lang-ru">Суданская коллегия адвокатов</span></span>
+            <span class="bg-[#0B1D3A] text-white px-5 py-2 rounded-full text-sm shadow-lg"><i class="fas fa-map-pin ml-1"></i> <span class="lang-ar">الخرطوم - شارع الستين</span><span class="lang-en">Khartoum - Al-Sitteen St.</span><span class="lang-zh">喀土穆 - 六十街</span><span class="lang-fr">Khartoum - Rue Al-Sitteen</span><span class="lang-ru">Хартум - ул. Аль-Ситтин</span></span>
+            <span class="bg-[#0B1D3A] text-white px-5 py-2 rounded-full text-sm shadow-lg"><i class="fas fa-gavel ml-1"></i> <span class="lang-ar">محامي</span><span class="lang-en">Lawyer</span><span class="lang-zh">律师</span><span class="lang-fr">Avocat</span><span class="lang-ru">Адвокат</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRACTICE AREAS - الخدمات ===== -->
+  <section id="practice" class="py-20 md:py-28 theme-transition" style="background: var(--bg-primary);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center" data-aos="fade-up">
+        <span class="text-[#C9A227] font-bold tracking-widest"><span class="lang-ar">الخدمات القانونية</span><span class="lang-en">Legal Services</span><span class="lang-zh">法律服务</span><span class="lang-fr">Services juridiques</span><span class="lang-ru">Юридические услуги</span></span>
+        <h2 class="text-3xl md:text-5xl font-black" style="color: var(--text-primary);"><span class="lang-ar">ما أقدمه من خدمات</span><span class="lang-en">What I Offer</span><span class="lang-zh">我提供的服务</span><span class="lang-fr">Ce que j'offre</span><span class="lang-ru">Что я предлагаю</span></h2>
+        <div class="w-24 h-1 bg-[#C9A227] mx-auto mt-4"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
+        <div data-aos="fade-up" data-aos-delay="0" class="glass-card-light shadow-xl rounded-2xl p-7 hover-lift hover-gold">
+          <i class="fas fa-gavel text-5xl text-[#C9A227]"></i>
+          <h4 class="text-xl font-bold mt-4" style="color: var(--text-primary);"><span class="lang-ar">القضايا الجنائية</span><span class="lang-en">Criminal Defense</span><span class="lang-zh">刑事辩护</span><span class="lang-fr">Défense pénale</span><span class="lang-ru">Уголовная защита</span></h4>
+          <p class="text-sm mt-2" style="color: var(--text-secondary);"><span class="lang-ar">دفاع قوي وتمثيل أمام المحاكم في جميع القضايا الجنائية</span><span class="lang-en">Strong defense and court representation in all criminal cases</span><span class="lang-zh">所有刑事案件的有力辩护和法庭代理</span><span class="lang-fr">Défense solide et représentation devant les tribunaux</span><span class="lang-ru">Сильная защита и представительство в судах</span></p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="50" class="glass-card-light shadow-xl rounded-2xl p-7 hover-lift hover-gold">
+          <i class="fas fa-file-signature text-5xl text-[#C9A227]"></i>
+          <h4 class="text-xl font-bold mt-4" style="color: var(--text-primary);"><span class="lang-ar">القضايا المدنية</span><span class="lang-en">Civil Litigation</span><span class="lang-zh">民事诉讼</span><span class="lang-fr">Contentieux civil</span><span class="lang-ru">Гражданские споры</span></h4>
+          <p class="text-sm mt-2" style="color: var(--text-secondary);"><span class="lang-ar">المنازعات المدنية، التعويضات، العقود والاتفاقيات</span><span class="lang-en">Civil disputes, compensation, contracts and agreements</span><span class="lang-zh">民事纠纷、赔偿、合同和协议</span><span class="lang-fr">Litiges civils, indemnités, contrats</span><span class="lang-ru">Гражданские споры, компенсации, контракты</span></p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100" class="glass-card-light shadow-xl rounded-2xl p-7 hover-lift hover-gold">
+          <i class="fas fa-people-arrows text-5xl text-[#C9A227]"></i>
+          <h4 class="text-xl font-bold mt-4" style="color: var(--text-primary);"><span class="lang-ar">الأحوال الشخصية</span><span class="lang-en">Family Law</span><span class="lang-zh">家庭法</span><span class="lang-fr">Droit de la famille</span><span class="lang-ru">Семейное право</span></h4>
+          <p class="text-sm mt-2" style="color: var(--text-secondary);"><span class="lang-ar">قضايا الطلاق، الحضانة، النفقة، والميراث</span><span class="lang-en">Divorce, custody, alimony, and inheritance cases</span><span class="lang-zh">离婚、监护权、赡养费和继承案件</span><span class="lang-fr">Divorce, garde, pension alimentaire, héritage</span><span class="lang-ru">Развод, опека, алименты, наследство</span></p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="150" class="glass-card-light shadow-xl rounded-2xl p-7 hover-lift hover-gold">
+          <i class="fas fa-building text-5xl text-[#C9A227]"></i>
+          <h4 class="text-xl font-bold mt-4" style="color: var(--text-primary);"><span class="lang-ar">القضايا التجارية</span><span class="lang-en">Commercial Law</span><span class="lang-zh">商法</span><span class="lang-fr">Droit commercial</span><span class="lang-ru">Коммерческое право</span></h4>
+          <p class="text-sm mt-2" style="color: var(--text-secondary);"><span class="lang-ar">قضايا الشركات، العقود التجارية، المنازعات التجارية</span><span class="lang-en">Corporate, commercial contracts, and business disputes</span><span class="lang-zh">公司、商业合同和商业纠纷</span><span class="lang-fr">Sociétés, contrats commerciaux, litiges</span><span class="lang-ru">Корпоративные споры, контракты</span></p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200" class="glass-card-light shadow-xl rounded-2xl p-7 hover-lift hover-gold">
+          <i class="fas fa-briefcase text-5xl text-[#C9A227]"></i>
+          <h4 class="text-xl font-bold mt-4" style="color: var(--text-primary);"><span class="lang-ar">قضايا العمل</span><span class="lang-en">Labor Law</span><span class="lang-zh">劳动法</span><span class="lang-fr">Droit du travail</span><span class="lang-ru">Трудовое право</span></h4>
+          <p class="text-sm mt-2" style="color: var(--text-secondary);"><span class="lang-ar">النزاعات العمالية، عقود العمل، حقوق العمال</span><span class="lang-en">Labor disputes, employment contracts, workers' rights</span><span class="lang-zh">劳资纠纷、雇佣合同、工人权利</span><span class="lang-fr">Litiges du travail, contrats, droits des travailleurs</span><span class="lang-ru">Трудовые споры, контракты, права работников</span></p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="250" class="glass-card-light shadow-xl rounded-2xl p-7 hover-lift hover-gold">
+          <i class="fas fa-pen-fancy text-5xl text-[#C9A227]"></i>
+          <h4 class="text-xl font-bold mt-4" style="color: var(--text-primary);"><span class="lang-ar">صياغة العقود والاستشارات</span><span class="lang-en">Contract Drafting & Consultancy</span><span class="lang-zh">合同起草与咨询</span><span class="lang-fr">Rédaction de contrats et conseil</span><span class="lang-ru">Составление контрактов и консультирование</span></h4>
+          <p class="text-sm mt-2" style="color: var(--text-secondary);"><span class="lang-ar">استشارات قانونية، صياغة عقود، مراجعة قانونية</span><span class="lang-en">Legal consultations, contract drafting, legal review</span><span class="lang-zh">法律咨询、合同起草、法律审查</span><span class="lang-fr">Consultations juridiques, rédaction et révision de contrats</span><span class="lang-ru">Юридические консультации, составление контрактов</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACHIEVEMENTS ===== -->
+  <section id="achievements" class="py-20 md:py-28 bg-[#0B1D3A] text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2240%22 opacity=%220.5%22>⚖️</text></svg>') repeat; background-size: 80px 80px;"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div class="text-center" data-aos="fade-up">
+        <span class="text-[#C9A227] font-bold tracking-widest"><span class="lang-ar">الإنجازات</span><span class="lang-en">Achievements</span><span class="lang-zh">成就</span><span class="lang-fr">Réalisations</span><span class="lang-ru">Достижения</span></span>
+        <h2 class="text-3xl md:text-5xl font-black"><span class="lang-ar">أرقام تثق بها</span><span class="lang-en">Numbers You Can Trust</span><span class="lang-zh">值得信赖的数字</span><span class="lang-fr">Des chiffres de confiance</span><span class="lang-ru">Цифры, которым можно доверять</span></h2>
+        <div class="w-24 h-1 bg-[#C9A227] mx-auto mt-4"></div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-14 text-center">
+        <div data-aos="fade-up" data-aos-delay="0" class="achievement-card bg-white/5 backdrop-blur-sm p-10 rounded-2xl border border-[#C9A227]/30">
+          <div class="text-6xl font-black text-[#C9A227]">+300</div>
+          <p class="mt-3 text-gray-300 text-lg"><span class="lang-ar">قضية رابحة</span><span class="lang-en">Won Cases</span><span class="lang-zh">胜诉案件</span><span class="lang-fr">Affaires gagnées</span><span class="lang-ru">Выигранных дел</span></p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100" class="achievement-card bg-white/5 backdrop-blur-sm p-10 rounded-2xl border border-[#C9A227]/30">
+          <div class="text-6xl font-black text-[#C9A227]">+8</div>
+          <p class="mt-3 text-gray-300 text-lg"><span class="lang-ar">سنوات خبرة</span><span class="lang-en">Years Experience</span><span class="lang-zh">年经验</span><span class="lang-fr">Ans d'expérience</span><span class="lang-ru">Лет опыта</span></p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200" class="achievement-card bg-white/5 backdrop-blur-sm p-10 rounded-2xl border border-[#C9A227]/30">
+          <div class="text-6xl font-black text-[#C9A227]">+200</div>
+          <p class="mt-3 text-gray-300 text-lg"><span class="lang-ar">عميل راضي</span><span class="lang-en">Happy Clients</span><span class="lang-zh">满意客户</span><span class="lang-fr">Clients satisfaits</span><span class="lang-ru">Довольных клиентов</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONSULTATION ===== -->
+  <section id="consultation" class="py-20 md:py-28 theme-transition" style="background: var(--bg-secondary);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div data-aos="fade-up" class="text-center">
+        <span class="text-[#C9A227] font-bold tracking-widest"><span class="lang-ar">استشارة قانونية سريعة</span><span class="lang-en">Quick Legal Advice</span><span class="lang-zh">快速法律咨询</span><span class="lang-fr">Conseil juridique rapide</span><span class="lang-ru">Быстрая консультация</span></span>
+        <h2 class="text-3xl md:text-5xl font-black" style="color: var(--text-primary);"><span class="lang-ar">أنا هنا لمساعدتك</span><span class="lang-en">I'm Here to Help</span><span class="lang-zh">我在这里为您提供帮助</span><span class="lang-fr">Je suis là pour vous</span><span class="lang-ru">Я здесь, чтобы помочь</span></h2>
+        <p class="mt-3" style="color: var(--text-secondary);"><span class="lang-ar">سيتم الرد خلال 24 ساعة · الاستشارة الأولى مجانية</span><span class="lang-en">Response within 24h · First consultation free</span><span class="lang-zh">24小时内回复 · 首次咨询免费</span><span class="lang-fr">Réponse sous 24h · 1ère consultation gratuite</span><span class="lang-ru">Ответ в течение 24 ч · Первая консультация бесплатно</span></p>
+      </div>
+      <form id="consultationForm" class="mt-12 p-8 md:p-10 rounded-3xl shadow-2xl border border-[#C9A227]/10" style="background: var(--bg-primary);" data-aos="fade-up" data-aos-delay="100">
+        <div class="grid md:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-sm font-medium" style="color: var(--text-primary);"><span class="lang-ar">الاسم</span><span class="lang-en">Name</span><span class="lang-zh">姓名</span><span class="lang-fr">Nom</span><span class="lang-ru">Имя</span></label>
+            <input id="consultName" type="text" placeholder="الاسم الكامل" class="w-full mt-1 px-5 py-3.5 rounded-xl border focus:ring-2 focus:ring-[#C9A227] outline-none" style="background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-color);" required />
+          </div>
+          <div>
+            <label class="block text-sm font-medium" style="color: var(--text-primary);"><span class="lang-ar">رقم الهاتف</span><span class="lang-en">Phone</span><span class="lang-zh">电话</span><span class="lang-fr">Téléphone</span><span class="lang-ru">Телефон</span></label>
+            <input id="consultPhone" type="tel" placeholder="رقم الجوال" class="w-full mt-1 px-5 py-3.5 rounded-xl border focus:ring-2 focus:ring-[#C9A227] outline-none" style="background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-color);" required />
+          </div>
+        </div>
+        <div class="mt-5">
+          <label class="block text-sm font-medium" style="color: var(--text-primary);"><span class="lang-ar">نوع القضية</span><span class="lang-en">Case Type</span><span class="lang-zh">案件类型</span><span class="lang-fr">Type d'affaire</span><span class="lang-ru">Тип дела</span></label>
+          <select id="consultCaseType" class="w-full mt-1 px-5 py-3.5 rounded-xl border focus:ring-2 focus:ring-[#C9A227] outline-none" style="background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-color);">
+            <option value="قضايا جنائية">قضايا جنائية</option><option value="قضايا مدنية">قضايا مدنية</option><option value="أحوال شخصية">أحوال شخصية</option><option value="قضايا تجارية">قضايا تجارية</option><option value="قضايا العمل">قضايا العمل</option><option value="صياغة عقود">صياغة عقود</option>
+          </select>
+        </div>
+        <div class="mt-5">
+          <label class="block text-sm font-medium" style="color: var(--text-primary);"><span class="lang-ar">وصف المشكلة</span><span class="lang-en">Description</span><span class="lang-zh">问题描述</span><span class="lang-fr">Description</span><span class="lang-ru">Описание</span></label>
+          <textarea id="consultDesc" rows="5" placeholder="ملخص القضية" class="w-full mt-1 px-5 py-3.5 rounded-xl border focus:ring-2 focus:ring-[#C9A227] outline-none" style="background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-color);" required></textarea>
+        </div>
+        <button type="submit" class="mt-6 w-full bg-[#C9A227] text-[#0B1D3A] font-bold py-4 rounded-xl hover:bg-[#b3901f] transition shadow-xl flex items-center justify-center gap-3 text-lg">
+          <i class="fas fa-paper-plane"></i>
+          <span class="lang-ar">إرسال الاستشارة</span><span class="lang-en">Send Consultation</span><span class="lang-zh">发送咨询</span><span class="lang-fr">Envoyer</span><span class="lang-ru">Отправить</span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="testimonials" class="py-20 md:py-28 theme-transition" style="background: var(--bg-primary);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center" data-aos="fade-up">
+        <span class="text-[#C9A227] font-bold tracking-widest"><span class="lang-ar">آراء الموكلين</span><span class="lang-en">Testimonials</span><span class="lang-zh">客户评价</span><span class="lang-fr">Témoignages</span><span class="lang-ru">Отзывы</span></span>
+        <h2 class="text-3xl md:text-5xl font-black" style="color: var(--text-primary);"><span class="lang-ar">ماذا يقولون عني</span><span class="lang-en">What They Say About Me</span><span class="lang-zh">他们对我的评价</span><span class="lang-fr">Ce qu'ils disent de moi</span><span class="lang-ru">Что говорят обо мне</span></h2>
+        <div class="w-24 h-1 bg-[#C9A227] mx-auto mt-4"></div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 mt-14">
+        <div data-aos="fade-up" data-aos-delay="0" class="glass-card-light p-8 rounded-2xl shadow-xl hover-lift">
+          <div class="flex text-[#C9A227] text-lg">★★★★★</div>
+          <p class="mt-4" style="color: var(--text-secondary);"><span class="lang-ar">"المحامي ياسين محامي متميز، أوصل حقي في قضية مدنية."</span><span class="lang-en">"Lawyer Yaseen is excellent, he won my civil case."</span><span class="lang-zh">"亚辛律师很优秀，他赢得了我的民事案件。"</span><span class="lang-fr">"L'avocat Yaseen est excellent, il a gagné mon affaire."</span><span class="lang-ru">"Адвокат Ясин отличный, выиграл моё дело."</span></p>
+          <p class="mt-4 text-sm" style="color: var(--text-secondary);"><i class="fas fa-user ml-2"></i> <span class="lang-ar">م. من الخرطوم</span><span class="lang-en">M. - Khartoum</span><span class="lang-zh">M. - 喀土穆</span><span class="lang-fr">M. - Khartoum</span><span class="lang-ru">М. - Хартум</span></p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100" class="glass-card-light p-8 rounded-2xl shadow-xl hover-lift">
+          <div class="flex text-[#C9A227] text-lg">★★★★★</div>
+          <p class="mt-4" style="color: var(--text-secondary);"><span class="lang-ar">"خبرة عالية في القضايا الجنائية، أنصح بالتعامل معه."</span><span class="lang-en">"High expertise in criminal cases, highly recommend."</span><span class="lang-zh">"在刑事案件方面经验丰富，强烈推荐。"</span><span class="lang-fr">"Haute expertise en pénal, je recommande."</span><span class="lang-ru">"Высокая экспертиза в уголовных делах."</span></p>
+          <p class="mt-4 text-sm" style="color: var(--text-secondary);"><i class="fas fa-user ml-2"></i> <span class="lang-ar">ن. من أم درمان</span><span class="lang-en">N. - Omdurman</span><span class="lang-zh">N. - 恩图曼</span><span class="lang-fr">N. - Omdurman</span><span class="lang-ru">Н. - Омдурман</span></p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200" class="glass-card-light p-8 rounded-2xl shadow-xl hover-lift">
+          <div class="flex text-[#C9A227] text-lg">★★★★★</div>
+          <p class="mt-4" style="color: var(--text-secondary);"><span class="lang-ar">"استشارات دقيقة وتواصل مستمر، أثق به تماماً."</span><span class="lang-en">"Accurate consultations, continuous communication, I trust him completely."</span><span class="lang-zh">"准确的咨询和持续的沟通，我完全信任他。"</span><span class="lang-fr">"Consultations précises, communication continue."</span><span class="lang-ru">"Точные консультации, постоянная связь."</span></p>
+          <p class="mt-4 text-sm" style="color: var(--text-secondary);"><i class="fas fa-user ml-2"></i> <span class="lang-ar">س. من الخرطوم بحري</span><span class="lang-en">S. - Khartoum North</span><span class="lang-zh">S. - 北喀土穆</span><span class="lang-fr">S. - Khartoum Nord</span><span class="lang-ru">С. - Северный Хартум</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="py-20 md:py-28 bg-[#0B1D3A] text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2240%22 opacity=%220.5%22>⚖️</text></svg>') repeat; background-size: 80px 80px;"></div>
+    <div class="absolute -top-60 -right-60 w-96 h-96 bg-[#C9A227] rounded-full filter blur-3xl opacity-5"></div>
+    <div class="absolute -bottom-60 -left-60 w-96 h-96 bg-[#C9A227] rounded-full filter blur-3xl opacity-5"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div data-aos="fade-up" class="text-center">
+        <span class="text-[#C9A227] font-bold tracking-widest"><i class="fas fa-phone ml-2"></i> <span class="lang-ar">تواصل معي</span><span class="lang-en">Contact Me</span><span class="lang-zh">联系我</span><span class="lang-fr">Contactez-moi</span><span class="lang-ru">Свяжитесь со мной</span></span>
+        <h2 class="text-3xl md:text-5xl font-black"><span class="lang-ar">كن على تواصل مباشر</span><span class="lang-en">Get in Touch</span><span class="lang-zh">直接联系</span><span class="lang-fr">Restez en contact</span><span class="lang-ru">Свяжитесь напрямую</span></h2>
+        <div class="w-24 h-1 bg-[#C9A227] mx-auto mt-4"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-5 mt-14">
+        <a href="tel:+249100053204" data-aos="fade-up" data-aos-delay="0" class="contact-icon-box glass-card p-6 rounded-2xl flex items-center gap-6 hover:border-[#C9A227]">
+          <div class="w-16 h-16 rounded-full bg-[#C9A227]/20 flex items-center justify-center text-[#C9A227] text-3xl group-hover:bg-[#C9A227] group-hover:text-[#0B1D3A] transition-all">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div>
+            <p class="text-sm text-gray-400"><span class="lang-ar">اتصال</span><span class="lang-en">Call</span><span class="lang-zh">电话</span><span class="lang-fr">Appel</span><span class="lang-ru">Звонок</span></p>
+            <p class="text-xl font-semibold text-white">+249100053204</p>
+          </div>
+        </a>
+        <a href="https://wa.me/249929881546" target="_blank" data-aos="fade-up" data-aos-delay="50" class="contact-icon-box glass-card p-6 rounded-2xl flex items-center gap-6 hover:border-[#C9A227]">
+          <div class="w-16 h-16 rounded-full bg-[#25D366]/20 flex items-center justify-center text-[#25D366] text-3xl group-hover:bg-[#25D366] group-hover:text-white transition-all">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <div>
+            <p class="text-sm text-gray-400"><span class="lang-ar">واتساب</span><span class="lang-en">WhatsApp</span><span class="lang-zh">WhatsApp</span><span class="lang-fr">WhatsApp</span><span class="lang-ru">WhatsApp</span></p>
+            <p class="text-xl font-semibold text-white">+249929881546</p>
+          </div>
+        </a>
+        <a href="mailto:yassin123salman@gmail.com" data-aos="fade-up" data-aos-delay="100" class="contact-icon-box glass-card p-6 rounded-2xl flex items-center gap-6 hover:border-[#C9A227]">
+          <div class="w-16 h-16 rounded-full bg-[#C9A227]/20 flex items-center justify-center text-[#C9A227] text-3xl group-hover:bg-[#C9A227] group-hover:text-[#0B1D3A] transition-all">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <p class="text-sm text-gray-400"><span class="lang-ar">البريد الإلكتروني</span><span class="lang-en">Email</span><span class="lang-zh">邮箱</span><span class="lang-fr">Email</span><span class="lang-ru">Email</span></p>
+            <p class="text-lg font-semibold text-white">yassin123salman@gmail.com</p>
+          </div>
+        </a>
+        <a href="https://maps.google.com/?q=الخرطوم+شارع+الستين" target="_blank" data-aos="fade-up" data-aos-delay="150" class="contact-icon-box glass-card p-6 rounded-2xl flex items-center gap-6 hover:border-[#C9A227]">
+          <div class="w-16 h-16 rounded-full bg-[#C9A227]/20 flex items-center justify-center text-[#C9A227] text-3xl group-hover:bg-[#C9A227] group-hover:text-[#0B1D3A] transition-all">
+            <i class="fas fa-map-pin"></i>
+          </div>
+          <div>
+            <p class="text-sm text-gray-400"><span class="lang-ar">المكتب</span><span class="lang-en">Office</span><span class="lang-zh">办公室</span><span class="lang-fr">Bureau</span><span class="lang-ru">Офис</span></p>
+            <p class="text-lg font-semibold text-white"><span class="lang-ar">الخرطوم - شارع الستين</span><span class="lang-en">Khartoum - Al-Sitteen St.</span><span class="lang-zh">喀土穆 - 六十街</span><span class="lang-fr">Khartoum - Rue Al-Sitteen</span><span class="lang-ru">Хартум - ул. Аль-Ситтин</span></p>
+          </div>
+        </a>
+      </div>
+      <!-- Payment Methods -->
+      <div data-aos="fade-up" data-aos-delay="200" class="mt-14">
+        <p class="text-center text-gray-400 text-sm mb-6"><i class="fas fa-credit-card ml-2"></i> <span class="lang-ar">وسائل الدفع</span><span class="lang-en">Payment Methods</span><span class="lang-zh">支付方式</span><span class="lang-fr">Moyens de paiement</span><span class="lang-ru">Способы оплаты</span></p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/249929881546?text=السلام%20عليكم%20أريد%20الدفع%20عن%20طريق%20بنكك" target="_blank" class="payment-btn px-6 py-3.5 rounded-xl flex items-center gap-3 text-gray-300 hover:text-white transition">
+            <div class="payment-icon"><i class="fas fa-university"></i></div>
+            <span class="text-sm font-medium"><span class="lang-ar">بنكك</span><span class="lang-en">Bankak</span><span class="lang-zh">Bankak</span><span class="lang-fr">Bankak</span><span class="lang-ru">Bankak</span></span>
+          </a>
+          <a href="https://wa.me/249929881546?text=السلام%20عليكم%20أريد%20الدفع%20عن%20طريق%20فوري" target="_blank" class="payment-btn px-6 py-3.5 rounded-xl flex items-center gap-3 text-gray-300 hover:text-white transition">
+            <div class="payment-icon"><i class="fas fa-mobile-alt"></i></div>
+            <span class="text-sm font-medium"><span class="lang-ar">فوري</span><span class="lang-en">Fawry</span><span class="lang-zh">Fawry</span><span class="lang-fr">Fawry</span><span class="lang-ru">Fawry</span></span>
+          </a>
+          <a href="https://wa.me/249929881546?text=السلام%20عليكم%20أريد%20الدفع%20عن%20طريق%20أوكاش" target="_blank" class="payment-btn px-6 py-3.5 rounded-xl flex items-center gap-3 text-gray-300 hover:text-white transition">
+            <div class="payment-icon"><i class="fas fa-wallet"></i></div>
+            <span class="text-sm font-medium"><span class="lang-ar">أوكاش</span><span class="lang-en">Ocash</span><span class="lang-zh">Ocash</span><span class="lang-fr">Ocash</span><span class="lang-ru">Ocash</span></span>
+          </a>
+          <a href="https://wa.me/249929881546?text=السلام%20عليكم%20أريد%20الدفع%20عن%20طريق%20ماي%20كاشي" target="_blank" class="payment-btn px-6 py-3.5 rounded-xl flex items-center gap-3 text-gray-300 hover:text-white transition">
+            <div class="payment-icon"><i class="fas fa-money-bill-transfer"></i></div>
+            <span class="text-sm font-medium"><span class="lang-ar">ماي كاشي</span><span class="lang-en">My Cashy</span><span class="lang-zh">My Cashy</span><span class="lang-fr">My Cashy</span><span class="lang-ru">My Cashy</span></span>
+          </a>
+        </div>
+      </div>
+      <div class="mt-12 text-center text-gray-300 border-t border-white/10 pt-8">
+        <p><i class="far fa-clock ml-2 text-[#C9A227]"></i> <span class="lang-ar">السبت - الخميس 9 ص - 5 م</span><span class="lang-en">Sat - Thu 9 AM - 5 PM</span><span class="lang-zh">周六至周四 上午9点 - 下午5点</span><span class="lang-fr">Sam - Jeu 9h - 17h</span><span class="lang-ru">Сб - Чт 9:00 - 17:00</span></p>
+        <p class="mt-2 text-sm text-gray-400"><i class="fas fa-map-marker-alt ml-2 text-[#C9A227]"></i> <span class="lang-ar">السودان - الخرطوم</span><span class="lang-en">Sudan - Khartoum</span><span class="lang-zh">苏丹 - 喀土穆</span><span class="lang-fr">Soudan - Khartoum</span><span class="lang-ru">Судан - Хартум</span></p>
+        <p class="mt-2 text-xs text-gray-500"><i class="fas fa-user-tie ml-1 text-[#C9A227]"></i> <span class="lang-ar">المحامي ياسين جابر</span><span class="lang-en">Lawyer Yaseen Jaber</span><span class="lang-zh">律师亚辛·贾比尔</span><span class="lang-fr">Avocat Yaseen Jaber</span><span class="lang-ru">Адвокат Ясин Джабер</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FLOATING WHATSAPP ===== -->
+  <a href="https://wa.me/249929881546" target="_blank" class="fixed bottom-6 left-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl floating-wa transition-all duration-300 text-2xl flex items-center justify-center w-14 h-14">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button id="backToTop" class="fixed bottom-24 left-6 z-50 bg-[#C9A227] text-[#0B1D3A] p-3.5 rounded-full shadow-2xl hover:shadow-xl transition-all duration-300 hidden">
+    <i class="fas fa-arrow-up text-lg"></i>
+  </button>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-[#08152a] text-gray-400 border-t border-[#C9A227]/20 py-8 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-3" style="background: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2230%22 opacity=%220.3%22>⚖️</text></svg>') repeat; background-size: 60px 60px;"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+      <p class="text-sm">&copy; 2026 <span class="lang-ar">المحامي ياسين جابر</span><span class="lang-en">Lawyer Yaseen Jaber</span><span class="lang-zh">律师亚辛·贾比尔</span><span class="lang-fr">Avocat Yaseen Jaber</span><span class="lang-ru">Адвокат Ясин Джабер</span> · <span class="lang-ar">جميع الحقوق محفوظة</span><span class="lang-en">All Rights Reserved</span><span class="lang-zh">版权所有</span><span class="lang-fr">Tous droits réservés</span><span class="lang-ru">Все права защищены</span></p>
+      <p class="text-xs mt-2 text-gray-500"><span class="lang-ar">المحتوى لا يعتبر استشارة قانونية رسمية إلا بعد التعاقد.</span><span class="lang-en">Content does not constitute official legal advice unless contracted.</span><span class="lang-zh">除非签约，否则内容不构成正式法律建议。</span><span class="lang-fr">Contenu non constitutif d'un avis juridique officiel.</span><span class="lang-ru">Контент не является официальной консультацией.</span></p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800, easing: 'ease-out-cubic' });
+
+    // ===== Progress Bar =====
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      document.getElementById('progressBar').style.width = progress + '%';
+      
+      const backBtn = document.getElementById('backToTop');
+      if (scrollTop > 500) backBtn.classList.remove('hidden');
+      else backBtn.classList.add('hidden');
+    });
+    document.getElementById('backToTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ===== Theme =====
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      const icon = document.getElementById('themeIcon');
+      const iconM = document.getElementById('themeIconMobile');
+      if (next === 'dark') {
+        icon.className = 'fas fa-sun';
+        if (iconM) iconM.className = 'fas fa-sun';
+      } else {
+        icon.className = 'fas fa-moon';
+        if (iconM) iconM.className = 'fas fa-moon';
+      }
+    }
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        if (saved === 'dark') {
+          document.getElementById('themeIcon').className = 'fas fa-sun';
+          const iconM = document.getElementById('themeIconMobile');
+          if (iconM) iconM.className = 'fas fa-sun';
+        }
+      }
+    })();
+
+    // ===== Language =====
+    function changeLang(val) {
+      const html = document.documentElement;
+      html.setAttribute('data-lang', val);
+      localStorage.setItem('lang', val);
+      if (val === 'en' || val === 'zh' || val === 'fr' || val === 'ru') html.dir = 'ltr';
+      else html.dir = 'rtl';
+      document.querySelectorAll('select').forEach(sel => sel.value = val);
+    }
+    (function() {
+      const saved = localStorage.getItem('lang') || 'ar';
+      document.documentElement.setAttribute('data-lang', saved);
+      if (saved === 'en' || saved === 'zh' || saved === 'fr' || saved === 'ru') document.documentElement.dir = 'ltr';
+      document.querySelectorAll('select').forEach(sel => sel.value = saved);
+    })();
+
+    // ===== Consultation Form to WhatsApp =====
+    document.getElementById('consultationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('consultName').value.trim();
+      const phone = document.getElementById('consultPhone').value.trim();
+      const caseType = document.getElementById('consultCaseType').value;
+      const desc = document.getElementById('consultDesc').value.trim();
+      if (!name || !phone || !desc) { alert('الرجاء ملء جميع الحقول / Please fill all fields'); return; }
+      const isAr = document.documentElement.getAttribute('data-lang') === 'ar';
+      const msg = isAr ? 
+        `📋 *استشارة قانونية جديدة*\n👤 الاسم: ${name}\n📱 الهاتف: ${phone}\n⚖️ نوع القضية: ${caseType}\n📝 الوصف: ${desc}` :
+        `📋 *New Legal Consultation*\n👤 Name: ${name}\n📱 Phone: ${phone}\n⚖️ Case: ${caseType}\n📝 Description: ${desc}`;
+      window.open(`https://wa.me/249929881546?text=${encodeURIComponent(msg)}`, '_blank');
+      this.reset();
+      const btn = this.querySelector('button[type="submit"]');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-check-circle"></i> ' + (isAr ? 'تم الإرسال ✅' : 'Sent ✅');
+      btn.style.background = '#25D366';
+      setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; }, 3000);
+    });
+
+    // ===== Mobile Menu =====
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+    document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    }));
+
+    // ===== Navbar Shadow =====
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('shadow-2xl', window.scrollY > 20);
+    });
+  </script>
+</body>
+</html>
