@@ -4,7 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5" />
   <title>ياسين جابر · المحامي والمستشار القانوني · YASEEN LAW</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>" />
+  <!-- PWA -->
+  <meta name="theme-color" content="#0B1D3A" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="YASEEN LAW" />
+  <meta name="application-name" content="YASEEN LAW" />
+  <meta name="description" content="ياسين جابر - محامي ومستشار قانوني في السودان" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;600;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -534,6 +544,16 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
+  <!-- ===== PWA INSTALL BUTTON ===== -->
+  <button id="installAppBtn" type="button" class="hidden fixed bottom-24 right-5 z-[60] bg-[#C9A227] text-[#0B1D3A] px-4 py-3 rounded-full shadow-2xl font-bold hover:scale-105 transition-transform" aria-label="Install YASEEN LAW">
+    <i class="fas fa-download ml-1"></i>
+    <span class="lang-ar">تثبيت التطبيق</span>
+    <span class="lang-en">Install App</span>
+    <span class="lang-zh">安装应用</span>
+    <span class="lang-fr">Installer</span>
+    <span class="lang-ru">Установить</span>
+  </button>
+
   <!-- ===== BACK TO TOP ===== -->
   <button id="backToTop" class="fixed bottom-24 left-6 z-50 bg-[#C9A227] text-[#0B1D3A] p-3.5 rounded-full shadow-2xl hover:shadow-xl transition-all duration-300 hidden">
     <i class="fas fa-arrow-up text-lg"></i>
@@ -648,5 +668,41 @@
       navbar.classList.toggle('shadow-2xl', window.scrollY > 20);
     });
   </script>
+
+  <!-- ===== PWA INSTALL + SERVICE WORKER ===== -->
+  <script>
+    let deferredInstallPrompt = null;
+    const installAppBtn = document.getElementById('installAppBtn');
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      if (installAppBtn) installAppBtn.classList.remove('hidden');
+    });
+
+    if (installAppBtn) {
+      installAppBtn.addEventListener('click', async () => {
+        if (!deferredInstallPrompt) return;
+        deferredInstallPrompt.prompt();
+        await deferredInstallPrompt.userChoice;
+        deferredInstallPrompt = null;
+        installAppBtn.classList.add('hidden');
+      });
+    }
+
+    window.addEventListener('appinstalled', () => {
+      deferredInstallPrompt = null;
+      if (installAppBtn) installAppBtn.classList.add('hidden');
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(registration => console.log('PWA Service Worker registered:', registration.scope))
+          .catch(error => console.error('PWA Service Worker registration failed:', error));
+      });
+    }
+  </script>
+
 </body>
 </html>
